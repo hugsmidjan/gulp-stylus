@@ -1,4 +1,5 @@
 const { src, dest, watch } = require('gulp');
+const { notifyPipeError, gulpReplace, normalizeOpts, prefixGlobs } = require('@hugsmidjan/gulp-utils');
 
 const defaultOpts = {
   name: 'css', // the display name of the generated tasks
@@ -14,32 +15,8 @@ const _plugins = {
   stylus: require('gulp-stylus'),
   autoprefixer: require('gulp-autoprefixer'),
   cleancss: require('gulp-clean-css'),
-  replace: require('gulp-replace'),
 };
 
-const plumber = require('gulp-plumber');
-
-const notifyError = (err) => {
-  var errmsg = err.message || err;
-  require('node-notifier').notify({
-    title: 'Error',
-    message: errmsg,
-  });
-  console.error(errmsg);
-};
-
-const notifyPipeError = () => plumber(notifyError);
-
-const normalizeOpts = (userOpts, defaultOpts) => {
-  const opts = { ...defaultOpts, ...userOpts };
-  opts.src = (opts.src + '/').replace(/\/\/$/, '/');
-  opts.dist = (opts.dist + '/').replace(/\/\/$/, '/');
-  if (typeof opts.glob === 'string') {
-    opts.glob = [opts.glob];
-  }
-  return opts;
-};
-const prefixGlobs = (globs, src) => globs.map((glob) => src + glob);
 
 module.exports = (opts) => {
   opts = normalizeOpts(opts, defaultOpts);
@@ -58,7 +35,7 @@ module.exports = (opts) => {
           format: 'keep-breaks',
         })
       )
-      .pipe(_plugins.replace(/ -no-merge/g, ''))
+      .pipe(gulpReplace(/ -no-merge/g, ''))
       .pipe(dest(opts.dist));
   };
   bundleTask.displayName = opts.name;
