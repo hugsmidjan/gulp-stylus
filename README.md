@@ -7,7 +7,7 @@ npm install --save-dev @hugsmidjan/gulp-stylus
 ## Usage
 
 ```js
-const [cssBundlem, cssWatch] = require('@hugsmidjan/gulp-stylus')(opts);
+const [cssBundle, cssWatch] = require('@hugsmidjan/gulp-stylus')(opts);
 ```
 
 ## API / Advanced usage
