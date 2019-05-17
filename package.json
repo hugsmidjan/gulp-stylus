@@ -2,7 +2,7 @@
   "name": "@hugsmidjan/gulp-stylus",
   "version": "0.1.0",
   "description": "stylus gulp task",
-  "main": "index.js",
+  "main": "gulp-stylus.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
