@@ -45,7 +45,7 @@ module.exports = (opts) => {
     if (opts.watchGlob) {
       watchGlobs = watchGlobs.concat(opts.watchGlob);
     }
-    watch(prefixGlobs(watchGlobs, opts.src), { base: opts.src }, bundleTask);
+    watch(prefixGlobs(watchGlobs, opts.src), bundleTask);
   };
   watchTask.displayName = opts.name + '_watch';
 
