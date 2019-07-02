@@ -7,7 +7,6 @@ const defaultOpts = {
   dist: 'pub/',
   glob: '*.styl', // which files to glob up as entry points
   watchGlob: '*/**/*.styl', // additional files to watch for changes
-  browsers: ['> 0.5%', 'last 2 versions', 'Firefox ESR', 'not dead'],
   sourcemaps: true, // Not supported tet
 };
 
@@ -28,7 +27,7 @@ module.exports = (opts) => {
     })
       .pipe(notifyPipeError())
       .pipe(_plugins.stylus({}))
-      .pipe(_plugins.autoprefixer({ browsers: opts.browsers }))
+      .pipe(_plugins.autoprefixer())
       .pipe(
         _plugins.cleancss({
           level: { 1: { roundingPrecision: 'all=7,px=2' } },

@@ -3,6 +3,7 @@
 ## Upcoming...
 
 - ... <!-- Add new lines here. Version number will be decided later -->
+- feat: Drop `browsers` option in favour of `browserslist` in package.json
 
 ## 0.1.0
 

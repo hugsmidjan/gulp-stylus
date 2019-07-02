@@ -22,7 +22,6 @@ const options = {
   dist: 'pub/',
   glob: '*.styl', // which files to use as entry points
   watchGlob: '*/**/*.styl', // additional files to watch for changes
-  browsers: ['> 0.5%', 'last 2 versions', 'Firefox ESR', 'not dead'],
   sourcemaps: true, // Not supported tet
 };
 
