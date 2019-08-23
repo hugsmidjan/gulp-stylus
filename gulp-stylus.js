@@ -7,7 +7,7 @@ const defaultOpts = {
   dist: 'pub/',
   glob: '*.styl', // which files to glob up as entry points
   watchGlob: '*/**/*.styl', // additional files to watch for changes
-  sourcemaps: true, // Not supported tet
+  sourcemaps: true, // Not supported yet
 };
 
 const _plugins = {
