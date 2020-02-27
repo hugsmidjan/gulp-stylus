@@ -15,11 +15,10 @@ const defaultOpts = {
   sourcemaps: '.',
 };
 
-const _plugins = {
-  stylus: require('gulp-stylus'),
-  autoprefixer: require('gulp-autoprefixer'),
-  cleancss: require('gulp-clean-css'),
-};
+const stylus = require('gulp-stylus');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 module.exports = (opts) => {
   opts = normalizeOpts(opts, defaultOpts);
@@ -30,13 +29,21 @@ module.exports = (opts) => {
       base: opts.src,
     })
       .pipe(notifyPipeError())
-      .pipe(_plugins.stylus({}))
-      .pipe(_plugins.autoprefixer())
+      .pipe(stylus({}))
       .pipe(
-        _plugins.cleancss({
-          level: { 1: { roundingPrecision: 'all=7,px=2' } },
-          format: 'keep-breaks',
-        })
+        postcss([
+          autoprefixer(),
+          cssnano({
+            preset: [
+              'default',
+              {
+                discardUnused: true,
+                mergeIdents: true,
+                cssDeclarationSorter: { keepOverrides: true },
+              },
+            ],
+          }),
+        ])
       )
       .pipe(gulpReplace(/ -no-merge/g, ''))
       .pipe(dest(opts.dist, { sourcemaps: opts.sourcemaps }));

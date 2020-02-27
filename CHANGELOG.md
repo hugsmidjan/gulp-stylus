@@ -3,6 +3,7 @@
 ## Upcoming...
 
 - ... <!-- Add new lines here. Version number will be decided later -->
+- feat: Use postcss for autoprefixing and minification
 - feat: Enable gulp's built-in sourcemaps output
 
 ## 0.2.0
