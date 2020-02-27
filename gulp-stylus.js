@@ -1,5 +1,10 @@
 const { src, dest, watch } = require('gulp');
-const { notifyPipeError, gulpReplace, normalizeOpts, prefixGlobs } = require('@hugsmidjan/gulp-utils');
+const {
+  notifyPipeError,
+  gulpReplace,
+  normalizeOpts,
+  prefixGlobs,
+} = require('@hugsmidjan/gulp-utils');
 
 const defaultOpts = {
   name: 'css', // the display name of the generated tasks
@@ -7,7 +12,7 @@ const defaultOpts = {
   dist: 'pub/',
   glob: '*.styl', // which files to glob up as entry points
   watchGlob: '*/**/*.styl', // additional files to watch for changes
-  sourcemaps: true, // Not supported yet
+  sourcemaps: '.',
 };
 
 const _plugins = {
@@ -16,13 +21,12 @@ const _plugins = {
   cleancss: require('gulp-clean-css'),
 };
 
-
 module.exports = (opts) => {
   opts = normalizeOpts(opts, defaultOpts);
 
   const bundleTask = () => {
     return src(prefixGlobs(opts.glob, opts.src), {
-      sourcemaps: opts.sourcemaps,
+      sourcemaps: !!opts.sourcemaps,
       base: opts.src,
     })
       .pipe(notifyPipeError())
@@ -35,7 +39,7 @@ module.exports = (opts) => {
         })
       )
       .pipe(gulpReplace(/ -no-merge/g, ''))
-      .pipe(dest(opts.dist));
+      .pipe(dest(opts.dist, { sourcemaps: opts.sourcemaps }));
   };
   bundleTask.displayName = opts.name;
 

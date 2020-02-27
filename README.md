@@ -22,7 +22,7 @@ const options = {
   dist: 'pub/',
   glob: '*.styl', // which files to use as entry points
   watchGlob: '*/**/*.styl', // additional files to watch for changes
-  sourcemaps: true, // Not supported tet
+  sourcemaps: '.', // boolean or string (relative location)
 };
 
 // Create the gulp tasks based on the above options.
