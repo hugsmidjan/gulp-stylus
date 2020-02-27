@@ -3,6 +3,11 @@
 ## Upcoming...
 
 - ... <!-- Add new lines here. Version number will be decided later -->
+
+## 0.2.1
+
+_2020-02-27_
+
 - feat: Use postcss for autoprefixing and minification
 - feat: Enable gulp's built-in sourcemaps output
 
