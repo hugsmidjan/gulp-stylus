@@ -20,8 +20,8 @@ const options = {
   name: 'css', // the display name of the generated tasks
   src: 'src/',
   dist: 'pub/',
-  glob: '*.styl', // which files to use as entry points
-  watchGlob: '*/**/*.styl', // additional files to watch for changes
+  glob: '*.styl', // Glob|Array<Glob> – for entry points. Use '!' prefix to ignore
+  watchGlob: '*/**/*.styl', // Glob|Array<Glob> – additional files to watch for changes (or '!' ignore).
   sourcemaps: '.', // boolean or string (relative location)
 };
 

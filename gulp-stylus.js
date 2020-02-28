@@ -10,9 +10,9 @@ const defaultOpts = {
   name: 'css', // the display name of the generated tasks
   src: 'src/',
   dist: 'pub/',
-  glob: '*.styl', // which files to glob up as entry points
-  watchGlob: '*/**/*.styl', // additional files to watch for changes
-  sourcemaps: '.',
+  glob: '*.styl', // Glob|Array<Glob> – for entry points. Use '!' prefix to ignore
+  watchGlob: '*/**/*.styl', // Glob|Array<Glob> – additional files to watch for changes (or '!' ignore).
+  sourcemaps: '.', // boolean or string (relative location)
 };
 
 const stylus = require('gulp-stylus');
