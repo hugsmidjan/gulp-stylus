@@ -23,6 +23,7 @@ const options = {
   glob: '*.styl', // Glob|Array<Glob> – for entry points. Use '!' prefix to ignore
   watchGlob: '*/**/*.styl', // Glob|Array<Glob> – additional files to watch for changes (or '!' ignore).
   sourcemaps: '.', // boolean or string (relative location)
+  minify: true,
 };
 
 // Create the gulp tasks based on the above options.

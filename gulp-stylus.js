@@ -13,6 +13,7 @@ const defaultOpts = {
   glob: '*.styl', // Glob|Array<Glob> – for entry points. Use '!' prefix to ignore
   watchGlob: '*/**/*.styl', // Glob|Array<Glob> – additional files to watch for changes (or '!' ignore).
   sourcemaps: '.', // boolean or string (relative location)
+  minify: true,
 };
 
 const stylus = require('gulp-stylus');
@@ -31,12 +32,16 @@ module.exports = (opts) => {
       .pipe(notifyPipeError())
       .pipe(stylus({}))
       .pipe(
-        postcss([
-          autoprefixer(),
-          cssnano({
-            preset: ['default', { cssDeclarationSorter: { keepOverrides: true } }],
-          }),
-        ])
+        postcss(
+          opts.minify
+            ? [
+                autoprefixer(),
+                cssnano({
+                  preset: ['default', { cssDeclarationSorter: { keepOverrides: true } }],
+                }),
+              ]
+            : [autoprefixer()]
+        )
       )
       .pipe(gulpReplace(/ -no-merge/g, ''))
       .pipe(dest(opts.dist, { sourcemaps: opts.sourcemaps }));
