@@ -3,6 +3,11 @@
 ## Upcoming...
 
 - ... <!-- Add new lines here. Version number will be decided later -->
+
+## 0.2.2
+
+_2020-03-16_
+
 - fix: Turn off cssnano's `cssDeclarationSorter` to aid minification of mixins
 - feat: Allow opting out of minification
 
