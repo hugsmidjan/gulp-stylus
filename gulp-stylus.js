@@ -34,12 +34,7 @@ module.exports = (opts) => {
       .pipe(
         postcss(
           opts.minify
-            ? [
-                autoprefixer(),
-                cssnano({
-                  preset: ['default', { cssDeclarationSorter: { keepOverrides: true } }],
-                }),
-              ]
+            ? [autoprefixer(), cssnano({ preset: 'default' })]
             : [autoprefixer()]
         )
       )
