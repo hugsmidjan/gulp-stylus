@@ -1,6 +1,6 @@
 {
   "name": "@hugsmidjan/gulp-stylus",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "stylus gulp task",
   "main": "gulp-stylus.js",
   "scripts": {
