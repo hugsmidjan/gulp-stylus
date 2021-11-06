@@ -1,3 +1,4 @@
+/*global process */
 const { src, dest, watch } = require('gulp');
 const {
   notifyPipeError,
@@ -12,7 +13,7 @@ const defaultOpts = {
   dist: 'pub/',
   glob: '*.styl', // Glob|Array<Glob> – for entry points. Use '!' prefix to ignore
   watchGlob: '*/**/*.styl', // Glob|Array<Glob> – additional files to watch for changes (or '!' ignore).
-  sourcemaps: '.', // boolean or string (relative location)
+  sourcemaps: process.env.NODE_ENV !== 'production' ? '.' : false, // boolean or string (relative location)
   minify: true,
 };
 
